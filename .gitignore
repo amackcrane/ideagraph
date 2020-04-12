@@ -3,9 +3,10 @@
 # ideagraph stuff
 data/
 notes/
+# we'll use data/.xyz for sample data
 !data/.*
-
-
+# emacs autosaves
+*~
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

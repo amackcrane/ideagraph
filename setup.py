@@ -20,12 +20,12 @@ if platform == "linux" or platform == "darwin":
     bash_line = "\nexport PYTHONPATH=\${PYTHONPATH}:" + project_dir + "\n\n"
     
     # append to .bash_profile
-    os.system("printf \"" + bash_line + "\" >> ~/.bash_profile")
+    os.system("printf \"" + bash_line + "\" >>~/.bash_profile")
 
     # create launcher script
-    cmd = '"#!/bin/bash\n\npython -m ideagraph \$@\n"'
+    cmd = '"#!/bin/bash \n\npython -m ideagraph \$@ \n"'
     exec_loc = "/usr/local/bin/ideagraph" if platform == "darwin" else "~/.local/bin/ideagraph"
-    os.system("printf " + cmd + " > " + exec_loc)
+    os.system("printf " + cmd + " >" + exec_loc)
     os.system("chmod +x " + exec_loc)
     
 
