@@ -17,16 +17,16 @@ def dump():
     """Persist loaded graph on exit"""
     g.save(graph, sys.argv[0])
 
-# Hold a string:function dict
-#   mapping command line functions to functions in ideagraph.graph
-funcs = {}
-
-
+    
 def help():
     print("'q' to exit")
     print(list(funcs.keys()))
 
-funcs["help"] = help
+    
+# Hold a string:function dict
+#   mapping command line functions to functions in ideagraph.graph
+funcs = {"help": help}
+
 
 def interact():
 
