@@ -25,24 +25,30 @@ def help():
     
 # Hold a string:function dict
 #   mapping command line functions to functions in ideagraph.graph
-funcs = {"help": help}
+funcs = {"help": help,
+         "add-edge": graph.add_edge,
+         "remove-edge": graph.remove_edge,
+         "add-node": graph.add_node}
 
 
 def interact():
 
     while True:
+        # Prompt for command line input, which is saved as 'x'
         x = input("> ")
         if x == "q":
             break
         x = x.split(" ")
-        if len(x) > 1:
-            funcs[x[0]](*x[1:])
-        else:
-            try:
+        try:
+            if len(x) > 1:
+                # Look up command in 'funcs' dict, and invoke it,
+                #   passing any arguments as unpacked positional args
+                funcs[x[0]](*x[1:])
+            else:
                 funcs[x[0]]()
-            except KeyError:
-                print("Not recognized...")
-                help()
+        except KeyError:
+            print("Not recognized...")
+            help()
 
     # on exit
     dump()
